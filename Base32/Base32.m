@@ -230,6 +230,7 @@
 {
     const char *utf8String = [binaryString UTF8String];
     char *endPtr = NULL;
+	errno = 0;
     long long foo = strtoull(utf8String, &endPtr, 2);
     
     if (endPtr != utf8String + strlen(utf8String))
