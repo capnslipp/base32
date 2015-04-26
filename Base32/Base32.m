@@ -118,6 +118,10 @@
          NSString *s = [reversedString substringWithRange:matchRange];
          NSString *r = [self reverseString:s];
          long long index = [self integerFromBinaryString:r];
+		 if (index == -1)
+		 	@throw [NSException exceptionWithName:NSInternalInconsistencyException
+				reason:[NSString stringWithFormat:@"Unexpectedly unable to decode binary string “%@” via integerFromBinaryString:.", r]
+				userInfo:nil];
          
          [str appendFormat:@"%c", kEncodeChars[index]];
      }];
